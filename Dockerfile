@@ -1,3 +1,9 @@
-FROM muniftanjim/stremthru
+FROM muniftanjim/stremthru:latest
+
 RUN mkdir -p /app/data
-CMD ["sh", "-c", "echo 'Iniciando...' && env && stremthru 2>&1 || echo 'ERRO: '$?"]
+
+ENV STREMTHRU_ENV=prod
+
+EXPOSE 8080
+
+ENTRYPOINT ["./stremthru"]
